@@ -5,9 +5,9 @@ import qs from "qs";
 import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
-  const REST_API_KEY = "[본인 REST API KEY 값]";
-  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
-  const CLIENT_SECRET = "[본인 CLIENT SECRET 값]";
+  const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
+  const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+  const CLIENT_SECRET = process.env.REACT_APP_SECRETE_CODE;
 
   // calllback으로 받은 인가코드
   const code = new URL(window.location.href).searchParams.get("code");
@@ -29,6 +29,7 @@ const Auth = () => {
         "https://kauth.kakao.com/oauth/token",
         payload
       );
+      console.log(res)
       
       // Kakao Javascript SDK 초기화
       window.Kakao.init(REST_API_KEY);

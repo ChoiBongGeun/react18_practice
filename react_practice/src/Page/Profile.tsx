@@ -9,7 +9,6 @@ const Profile = () => {
       let data = await window.Kakao.API.request({
         url: "/v2/user/me",
       });
-      console.log(data)
       // 사용자 정보 변수에 저장
       setUserId(data.id);
       setNickName(data.properties.nickname);
@@ -18,20 +17,13 @@ const Profile = () => {
       console.log(err);
     }
   };
-
-  const href = window.location.href;
-  let params = new URL(document.URL).searchParams;
-  let code = params.get("code");
-  console.log("code : " + code)
   useEffect(() => {
     getProfile();
   }, []);
   return (
     <div>
-        asdfasfsad
       <h2>{user_id}</h2>
       <h2>{nickName}</h2>
-      <img src={profileImage}></img>
     </div>
   );
 };
