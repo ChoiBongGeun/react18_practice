@@ -1,6 +1,7 @@
 import React from "react"
 import {BrowserRouter, Route, Routes,Navigate } from 'react-router-dom';
 import LoginPage from "../Page/LoginPage";
+import Profile from "../Page/Profile";
 import TestPage from "../Page/testPage"
 
 
@@ -11,7 +12,8 @@ const index = () => {
             <Routes>
                 <Route path="/" element={<TestPage />}/>
                 <Route path="/login" element={<LoginPage />}/>
-                <Route path="*" element={<Navigate to="/" replace />}/>
+                {/*<Route path="*" element={<Navigate to="/" replace />}/>*/}
+                <Route path="oauth/callback" element={<Profile />} />
             </Routes>
         </BrowserRouter>
     )

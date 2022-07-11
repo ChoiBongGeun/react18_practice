@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import TextField from "../component/atom/TextField";
 
 function LoginPage(): JSX.Element {
+  const KakaoUrl = process.env.REACT_APP_KAKAO_AUTH_URL;
     const [form, setForm] = useState({
         id: '',
         password: ''
@@ -31,6 +32,7 @@ function LoginPage(): JSX.Element {
             <div style={{}}>
                 <TextField label='ID' onChange={onChange} onKeyPress={onkeypress} type='text' value={id} variant='outlined' />
                 <TextField label='Password' onChange={onChange} onKeyPress={onkeypress} type='password' value={password} variant='outlined'/>
+                <a href={KakaoUrl}>Kakao Login</a>
             </div>
         </div>
     )
