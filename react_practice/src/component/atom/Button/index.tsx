@@ -15,13 +15,16 @@ interface IButton {
     label?:String;
     startIcon? : React.ReactNode;
     endIcon? : React.ReactNode;
+    loading? : boolean
+    loadingIndicator? : String;
+    loadingPosition?: "end" | "start" | "center";
+    ButtonType? : "button" | "iconButton" | "loadingButton";
 
 }
 
 function Button(props: IButton): JSX.Element {
   
-  const {variant,size,color,onClick,onKeyPress,children,label,startIcon,endIcon} = props;
-  const ButtonType ="button" ;
+  const {variant,size,color,onClick,onKeyPress,children,label,startIcon,endIcon,ButtonType="button",...loading} = props;
 
   return (
     <>
@@ -39,10 +42,14 @@ function Button(props: IButton): JSX.Element {
             iconButton :<IconButton size = {size}>
                             {children}
                         </IconButton>,
-            lodingButton :  <LoadingButton loading
+            loadingButton :  <LoadingButton variant={variant} 
+                                            size = {size}
+                                            color = {color}
+                                            onClick = {onClick}
                                             startIcon = {startIcon}
-                                            endIcon = {endIcon}>
-s
+                                            endIcon = {endIcon}
+                                            {...loading}>
+                                {label}
                             </LoadingButton>
         }[ButtonType]
     }
