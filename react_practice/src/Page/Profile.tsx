@@ -23,6 +23,7 @@ const Profile = () => {
   return (
     <div>
       <h2>{user_id}</h2>
+      <img src={profileImage} alt="profileImage" />
       <h2>{nickName}</h2>
     </div>
   );

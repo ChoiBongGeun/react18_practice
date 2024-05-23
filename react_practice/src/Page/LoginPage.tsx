@@ -4,6 +4,7 @@ import Button from "../component/atom/Button"
 import image from "../assets/image/kakao_login.png"
 
 function LoginPage(): JSX.Element {
+  const { naver }: any = window;
   const KakaoUrl = process.env.REACT_APP_KAKAO_AUTH_URL;
     const [form, setForm] = useState({
         id: '',
@@ -40,9 +41,8 @@ function LoginPage(): JSX.Element {
                 <TextField label='ID' onChange={onChange} onKeyPress={onkeypress} type='text' value={id} variant='outlined' />
                 <TextField label='Password' onChange={onChange} onKeyPress={onkeypress} type='password' value={password} variant='outlined'/>
                 <div>
-                  <Button onClick={onClick} label ={"Kakao Login"} ButtonType={"loadingButton"}/>
                   <Button ButtonType="iconButton">
-                    <img src={image} alt="kakaoImage"></img>
+                    <img src={image} alt="kakaoImage" onClick={onClick} />
                   </Button>
                 </div>
             </div>
